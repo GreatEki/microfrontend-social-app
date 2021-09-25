@@ -69,8 +69,13 @@ const signInGogleCallBack = passport.authenticate('google', {
 	successRedirect: 'http://localhost:9000',
 });
 
+const getUser = (req, res) => {
+	res.send(req.user);
+};
+
 module.exports = {
 	signup,
 	googleAuthenticate,
 	signInGogleCallBack,
+	getUser,
 };
