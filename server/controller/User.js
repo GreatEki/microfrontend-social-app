@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const ValidateRegisterUser = require('../validations/registerUser');
 const { ClientError } = require('../errors');
+const passport = require('passport');
 
 const signup = async (req, res) => {
 	try {
@@ -59,6 +60,17 @@ const signup = async (req, res) => {
 	}
 };
 
+const googleAuthenticate = passport.authenticate('google', {
+	scope: ['profile'],
+});
+
+const signInGogleCallBack = passport.authenticate('google', {
+	failureRedirect: '/',
+	successRedirect: 'http://localhost:9000',
+});
+
 module.exports = {
 	signup,
+	googleAuthenticate,
+	signInGogleCallBack,
 };

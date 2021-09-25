@@ -1,5 +1,4 @@
 const http = require('http');
-const express = require('express');
 const dotenv = require('dotenv');
 const path = require('path');
 const app = require('./app');
